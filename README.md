@@ -19,7 +19,7 @@ import sheepcord
 
 @sheepcord.command("hello", "says hello")
 @sheepcord.option(sheepcord.OptionType.USER, "user", "the user")
-async def hello(_: sheepcord.Interaction, user: sheepcord.User):
+async def hello(_: sheepcord.Interaction, user: sheepcord.User, bot: sheepcord.Inject[sheepcord.Bot]) -> sheepcord.InteractionResponse:
     return sheepcord.InteractionResponse(
         type=sheepcord.InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
         data=sheepcord.Message(content=f"Hello, {user.mention}!")
