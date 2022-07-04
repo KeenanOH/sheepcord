@@ -7,6 +7,11 @@
 A Discord interactions library built with blacksheep and pydantic.
 
 
+# Features
+- [x] Discord HTTP Interactions Server
+- [x] Dependency Injection
+
+
 ## Examples
 ```py
 import sheepcord
