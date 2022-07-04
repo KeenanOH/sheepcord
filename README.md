@@ -14,6 +14,7 @@ A Discord interactions library built with blacksheep and pydantic.
 ## Roadmap
 - [ ] Subcommands and Subcommand Groups
 - [ ] Dependency Injection for events
+- [ ] Upload Source Code
 
 ## Examples
 ```py
