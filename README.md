@@ -1,11 +1,22 @@
-# sheepcord
-![](https://img.shields.io/github/issues/Shinobou/sheepcord)
-![](https://img.shields.io/github/forks/Shinobou/sheepcord)
-![](https://img.shields.io/github/stars/Shinobou/sheepcord)
-![](https://img.shields.io/github/license/Shinobou/sheepcord)
-
-A Discord interactions library built with blacksheep and pydantic.
-
+<div align="center">
+ <h1>
+   <a href="https://shinobou.github.io/sheepcord">
+     sheepcord
+   </a>
+ </h1>
+ 
+ <img src="https://img.shields.io/github/issues/Shinobou/sheepcord">
+ <img src="https://img.shields.io/github/forks/Shinobou/sheepcord">
+ <img src="https://img.shields.io/github/stars/Shinobou/sheepcord">
+ <img src="https://img.shields.io/github/license/Shinobou/sheepcord">
+ <img src="https://tokei.rs/b1/github/Shinobou/sheepcord">
+ 
+ <br>
+ <br>
+ 
+ A Discord interactions library built with blacksheep and pydantic.
+ 
+</div>
 
 ## Features
 - [x] Discord HTTP Interactions Server
