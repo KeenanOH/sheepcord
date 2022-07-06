@@ -16,9 +16,7 @@ class RESTClient:
         token: str,
         application_id: str,
     ) -> None:
-        self._http_client: client.ClientSession = client.ClientSession(
-            base_url="https://discord.com/api/v10"
-        )
+        self._http_client: typing.Optional[client.ClientSession] = None
         self.token: str = token
         self.application_id: str = application_id
         self._headers: list[tuple[bytes, bytes]] = [
@@ -33,15 +31,21 @@ class RESTClient:
         content: typing.Optional[blacksheep.JSONContent] = None,
         parse_into: typing.Optional[typing.Type] = None,
     ):
+        if not self._http_client:
+            self._http_client = client.ClientSession(
+                base_url="https://discord.com/api/v10",
+                default_headers=self._headers
+            )
+
         request: blacksheep.Request = blacksheep.Request(
-            method, self._http_client.get_url(url), self._headers
+            method, self._http_client.get_url(url), None
         )
 
         response: blacksheep.Response = await self._http_client.send(
             request.with_content(content) if content else request
         )
 
-        if 0 <= response.status - 200 < 100:
+        if response.status - 200 >= 100:
             raise exceptions.RESTException(
                 f"{response.status}: {await response.text()}"
             )
@@ -50,6 +54,7 @@ class RESTClient:
             return pydantic.parse_obj_as(model, await response.json())
 
     async def register_command(self, command: commands.Command) -> None:
+        print(command.name)
         await self._handle_request(
             "POST",
             f"/applications/{self.application_id}/commands",

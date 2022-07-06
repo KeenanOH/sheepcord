@@ -1,0 +1,22 @@
+[project]
+name = "sheepcord"
+description = "A Discord interactions library built with blacksheep and pydantic."
+version = "0.1.0"
+authors = [
+    { name = "Shinobou", email = "86394469+Shinobou@users.noreply.github.com" }
+]
+dependencies = [
+    "pydantic~=1.9.1",
+    "blacksheep~=1.2.7",
+    "discord-interactions~=0.4.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "mypy"
+]
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
