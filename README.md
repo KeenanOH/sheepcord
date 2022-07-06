@@ -11,11 +11,6 @@ A Discord interactions library built with blacksheep and pydantic.
 - [x] Discord HTTP Interactions Server
 - [x] Dependency Injection
 
-## Roadmap
-- [ ] Subcommands and Subcommand Groups
-- [ ] Dependency Injection for events
-- [ ] Upload Source Code
-- [ ] Mypy strict
 
 ## Examples
 ```py
