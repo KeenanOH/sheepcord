@@ -15,6 +15,7 @@ __all__: typing.Sequence[str] = (
     "Inject",
     "event",
     "BotEventType",
+    "BotCommand"
 )
 
 T = typing.TypeVar("T")
@@ -31,9 +32,9 @@ class BotSubcommand:
 
 @dataclasses.dataclass
 class BotCommand:
-    callback: typing.Callable
     command: commands.Command
     auto_defer: bool
+    callback: typing.Optional[typing.Callable] = None
     subcommands: typing.Optional[dict[str, BotSubcommand]] = None
     subcommand_groups: typing.Optional[dict[str, list[BotSubcommand]]] = None
     inject: typing.Optional[dict[str, typing.Type]] = None
