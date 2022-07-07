@@ -33,8 +33,7 @@ class RESTClient:
     ):
         if not self._http_client:
             self._http_client = client.ClientSession(
-                base_url="https://discord.com/api/v10",
-                default_headers=self._headers
+                base_url="https://discord.com/api/v10", default_headers=self._headers
             )
 
         request: blacksheep.Request = blacksheep.Request(
@@ -63,11 +62,11 @@ class RESTClient:
 
     async def create_followup_message(
         self,
-        interaction_token: interactions.Interaction,
+        interaction_token: str,
         response: interactions.InteractionResponse,
     ):
         await self._handle_request(
-            "GET",
+            "POST",
             f"/webhooks/{self.application_id}/{interaction_token}",
             blacksheep.JSONContent(response),
         )

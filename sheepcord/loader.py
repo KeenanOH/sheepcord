@@ -18,10 +18,7 @@ __all__: typing.Sequence[str] = (
 )
 
 T = typing.TypeVar("T")
-
-
-class Inject(typing.Generic[T]):
-    pass
+Inject = typing.Annotated[T, typing.Any]
 
 
 @dataclasses.dataclass
@@ -29,6 +26,7 @@ class BotSubcommand:
     callback: typing.Callable
     command: commands.Option
     auto_defer: bool
+    inject: typing.Optional[dict[str, typing.Type]] = None
 
 
 @dataclasses.dataclass
@@ -53,6 +51,7 @@ class BotCommand:
                 ),
                 auto_defer,
             )
+            _inspect_signature(subcommand)
             self.subcommands[name] = subcommand
             return subcommand
 
@@ -75,15 +74,18 @@ class BotEventType(enum.IntEnum):
 class BotEvent:
     callback: typing.Callable
     type: BotEventType
+    inject: typing.Optional[dict[str, typing.Type]] = None
 
 
-def _inspect_signature(bot_command: BotCommand) -> None:
-    signature: inspect.Signature = inspect.signature(bot_command.callback)
+def _inspect_signature(
+    command_or_event: typing.Union[BotCommand, BotEvent, BotSubcommand]
+) -> None:
+    signature: inspect.Signature = inspect.signature(command_or_event.callback)
     for parameter in signature.parameters.values():
         if "sheepcord.loader.Inject" in str(parameter.annotation):
-            if not bot_command.inject:
-                bot_command.inject = {}
-            bot_command.inject[parameter.name] = parameter.annotation
+            if not command_or_event.inject:
+                command_or_event.inject = {}
+            command_or_event.inject[parameter.name] = parameter.annotation
 
 
 def command(
@@ -159,7 +161,9 @@ def option(
 
 def event(type: BotEventType):
     def inner(callback: typing.Callable):
-        return BotEvent(callback, type)
+        event: BotEvent = BotEvent(callback, type)
+        _inspect_signature(event)
+        return event
 
     return inner
 
@@ -177,6 +181,6 @@ class Loader:
                 bot._commands[local.command.name] = local
             elif isinstance(local, BotEvent):
                 if local.type == BotEventType.START:
-                    bot._start_callbacks.append(local.callback)
+                    bot._start_callbacks.append(local)
                 else:
-                    bot._stop_callbacks.append(local.callback)
+                    bot._stop_callbacks.append(local)
