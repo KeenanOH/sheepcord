@@ -53,7 +53,6 @@ class RESTClient:
             return pydantic.parse_obj_as(model, await response.json())
 
     async def register_command(self, command: commands.Command) -> None:
-        print(command.name)
         await self._handle_request(
             "POST",
             f"/applications/{self.application_id}/commands",

@@ -139,6 +139,8 @@ class Bot:
     ):
         kwargs = self._parse_options(interaction, interaction.data)
         kwargs.update(self._get_injected_objects(bot_command))
+        print(self._get_injected_objects(bot_command))
+        print(bot_command)
 
         if bot_command.auto_defer:
             self._loop.create_task(

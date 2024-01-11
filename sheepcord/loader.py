@@ -83,7 +83,7 @@ def _inspect_signature(
 ) -> None:
     signature: inspect.Signature = inspect.signature(command_or_event.callback)
     for parameter in signature.parameters.values():
-        if "sheepcord.loader.Inject" in str(parameter.annotation):
+        if "typing.Annotated" in str(parameter.annotation):
             if not command_or_event.inject:
                 command_or_event.inject = {}
             command_or_event.inject[parameter.name] = parameter.annotation
@@ -104,7 +104,6 @@ def command(
         else:
             options = []
         bot_command: BotCommand = BotCommand(
-            callback,
             commands.Command(
                 name=name,
                 description=description,
@@ -114,6 +113,7 @@ def command(
                 type=type,
             ),
             auto_defer,
+            callback
         )
         _inspect_signature(bot_command)
         return bot_command
