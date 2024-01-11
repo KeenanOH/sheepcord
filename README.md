@@ -5,11 +5,11 @@
    </a>
  </h1>
  
- <img src="https://img.shields.io/github/issues/Shinobou/sheepcord">
- <img src="https://img.shields.io/github/forks/Shinobou/sheepcord">
- <img src="https://img.shields.io/github/stars/Shinobou/sheepcord">
- <img src="https://img.shields.io/github/license/Shinobou/sheepcord">
- <img src="https://tokei.rs/b1/github/Shinobou/sheepcord">
+ <img src="https://img.shields.io/github/issues/keenanoh/sheepcord">
+ <img src="https://img.shields.io/github/forks/keenanoh/sheepcord">
+ <img src="https://img.shields.io/github/stars/keenanoh/sheepcord">
+ <img src="https://img.shields.io/github/license/keenanoh/sheepcord">
+ <img src="https://tokei.rs/b1/github/keenanoh/sheepcord">
  
  <br>
  <br>
