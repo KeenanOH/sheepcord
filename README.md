@@ -1,8 +1,6 @@
 <div align="center">
  <h1>
-   <a href="https://shinobou.github.io/sheepcord">
      sheepcord
-   </a>
  </h1>
  
  <img src="https://img.shields.io/github/issues/keenanoh/sheepcord">
