@@ -24,6 +24,20 @@
 
 
 ## Examples
+main.py
+```py
+import sheepcord
+
+bot = sheepcord.Bot(
+    "TOKEN",
+    "APPLICATION ID",
+    "SECRET",
+)
+bot.load_module("module")
+bot.start()
+
+```
+module.py
 ```py
 import sheepcord
 
