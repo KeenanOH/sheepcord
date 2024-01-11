@@ -54,10 +54,6 @@ async def hello(_: sheepcord.Interaction, user: sheepcord.User, bot: sheepcord.I
 loader = sheepcord.Loader(locals())
 ```
 
-
-## Documentation
-https://keenanoh.github.io/sheepcord
-
 ## Contributing
 All contributions are welcome. Please format the code with [black](https://github.com/psf/black).
 
