@@ -42,7 +42,7 @@ loader = sheepcord.Loader(locals())
 
 
 ## Documentation
-https://shinobou.github.io/sheepcord
+https://keenanoh.github.io/sheepcord
 
 ## Contributing
 All contributions are welcome. Please format the code with [black](https://github.com/psf/black).
